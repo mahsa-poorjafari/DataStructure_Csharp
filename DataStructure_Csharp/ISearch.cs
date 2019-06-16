@@ -8,6 +8,7 @@ namespace DataStructure_Csharp
     {
         int BinarySearch(int x, int low, int high);
         void SelectionSort();
+        void ReverseIt();
         int N { set; get; }
         int[] Myarray { set; get; }
         

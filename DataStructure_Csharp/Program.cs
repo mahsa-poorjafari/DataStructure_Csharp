@@ -8,7 +8,7 @@ namespace DataStructure_Csharp
         static void Main(string[] args)
         {
             Console.WriteLine("Select the Ordering method:");
-            Console.WriteLine("1:Bubble, 2:Selection, 3:Quick, 4:BinarySearch");
+            Console.WriteLine("1:Bubble, 2:Selection, 3:Quick, 4:BinarySearch, 5:Reverse an Array, 6:InsertionSort");
             string sortType = Console.ReadLine();
             Sorting sorting = new Sorting();
             switch (sortType)
@@ -61,12 +61,24 @@ namespace DataStructure_Csharp
                     int foundedItem = myarray.BinarySearch(3, lo, hi);
                     Console.Write("foundedItemIndex=> ");
                     Console.WriteLine(foundedItem.ToString());
-                    Console.ReadLine();
+                    
                     break;
-
+                case "5":
+                    int[] theArray = new int[] { 2, 8, 7, 1, 3, 5, 6, 4 };
+                    ArrayEntity array = new ArrayEntity(theArray, false);
+                    array.ReverseIt();
+                    break;
+                case "6":
+                    int[] theInArray = new int[] { 1, 4, 5, 2, 3, 7, 8, 6, 10, 9 };
+                    ArrayEntity arrayIn = new ArrayEntity(theInArray, false);
+                    arrayIn.InsertionSort();
+                    arrayIn.Print();
+                    
+                    break;
                 default:
                     break;
             } // End switch
+            Console.ReadLine();
 
         } // end Main
     }

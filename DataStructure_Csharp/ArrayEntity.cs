@@ -8,41 +8,62 @@ namespace DataStructure_Csharp
     {
         public int N { set; get; }
         public int[] Myarray { set; get; }
-        public bool Sorted { private set; get; }
-        
-        public ArrayEntity(int[] array, bool Sorted) {
+
+
+        public ArrayEntity(int[] array, bool SortFirst)
+        {
             Myarray = array;
             N = Myarray.Length;
-            if (!Sorted)
+            if (SortFirst)
             {
                 Myarray = BubbleSort(Myarray);
                 this.Print();
             }
 
         }
-        public void Print() {
-            for (int i = 0; i <= N-1; i++)
+        public void Print()
+        {
+            for (int i = 0; i <= N - 1; i++)
             {
                 Console.Write(Myarray[i] + ",");
             }
+            Console.WriteLine();
+        }
+
+        public void ReverseIt()
+        {
+            this.Print();
+            Stack<int> stack = new Stack<int>();
+            for (int i = 0; i < N; i++)
+            {
+                stack.Push(Myarray[i]);
+            }
+            for (int i = 0; i < N; i++)
+            {
+                Myarray[i] = stack.Pop();
+            }
+            Console.Write("After Reverse=> ");
+            this.Print();
+            Console.ReadLine();
         }
 
         public int BinarySearch(int x, int low, int high)
-        {            
+        {
             Console.WriteLine("  " + low + " " + high);
             //Console.ReadLine();
-            
-            
-            if (low <= high) {
+
+
+            if (low <= high)
+            {
                 int mid = (low + high) / 2;
                 Console.WriteLine("mid index=> " + mid);
                 if (x < Myarray[mid])
-                {                   
-                    return BinarySearch(x, low, mid-1 );
-                    
+                {
+                    return BinarySearch(x, low, mid - 1);
+
                 }
-                else if (x > Myarray[mid] )
-                {                    
+                else if (x > Myarray[mid])
+                {
                     return BinarySearch(x, mid + 1, high);
                 }
                 else
@@ -55,8 +76,8 @@ namespace DataStructure_Csharp
         public int[] BubbleSort(int[] array)
         {
             //int i, j = 0;
-            bool swapped;     
-            
+            bool swapped;
+
             for (int i = 0; i < N - 1; i++)
             {
                 swapped = false;
@@ -65,7 +86,7 @@ namespace DataStructure_Csharp
                 {
                     if (array[j] > array[j + 1])
                     {
-                        Swap(ref array[j] , ref array[j + 1]);
+                        Swap(ref array[j], ref array[j + 1]);
                         swapped = true;
                     }
                 }
@@ -89,18 +110,58 @@ namespace DataStructure_Csharp
         public void SelectionSort()
         {
             int m;
-            for (int i = 0; i < N-1; i++)
+            for (int i = 0; i < N - 1; i++)
             {
                 m = i;
-                for (int j = i+1; j < N; j++)
+                for (int j = i + 1; j < N; j++)
                 {
-                    if (Myarray[j] < Myarray[m]) {                        
+                    if (Myarray[j] < Myarray[m])
+                    {
                         m = j;
                     }
                 }
-            Swap(ref Myarray[m], ref Myarray[i]);
+                Swap(ref Myarray[m], ref Myarray[i]);
             }
         }
 
+        public void InsertionSort()
+        {
+            int key, j;
+            for (int i = 1; i < 2; i++)
+            {
+                key = Myarray[i];
+                j = i - 1;
+                this.Print();
+                Console.ReadLine();
+                while (j >= 0 && Myarray[j] > key)
+                {
+                    Myarray[j + 1] = Myarray[j];
+                    j--;
+                }
+                Myarray[j + 1] = key;
+            }
+        }
+        public void KMessyArray()
+        {
+            int k = 2;
+            int m;
+            for (int i = 0; i < N; i++)
+            {
+                m = i;
+                for (int j = i + 1; j <= i + k && j < N; j++)
+                {
+                    if (Myarray[j] < Myarray[m])
+                        m = j;
+                }
+                if (m != i)
+                {
+                    Swap(ref Myarray[m], ref Myarray[i]);
+                }
+
+            }
+        }
+
+
     }
+
 }
