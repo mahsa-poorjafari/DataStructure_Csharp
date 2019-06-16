@@ -8,7 +8,8 @@ namespace DataStructure_Csharp
         static void Main(string[] args)
         {
             Console.WriteLine("Select the Ordering method:");
-            Console.WriteLine("1:Bubble, 2:Selection, 3:Quick, 4:BinarySearch, 5:Reverse an Array, 6:InsertionSort");
+            Console.WriteLine("1:Bubble, 2:Selection, 3:Quick, 4:BinarySearch, 5:Reverse an Array, 6:InsertionSort," +
+                " 7:char array, 8:Find the Odd-time repeated element, 9:Filtering List");
             string sortType = Console.ReadLine();
             Sorting sorting = new Sorting();
             switch (sortType)
@@ -72,8 +73,26 @@ namespace DataStructure_Csharp
                     int[] theInArray = new int[] { 1, 4, 5, 2, 3, 7, 8, 6, 10, 9 };
                     ArrayEntity arrayIn = new ArrayEntity(theInArray, false);
                     arrayIn.InsertionSort();
-                    arrayIn.Print();
-                    
+                    arrayIn.Print();                    
+                    break;
+                case "7":
+                    string s = "abcd";
+                    PlayWithChar playWith = new PlayWithChar();
+                    playWith.Accum(s);
+                    break;
+                case "8":
+                    int[] theOddArray = new int[] { 20, 1, -1, 2, -2, 3, 3, 5, 5, 1, 2, 4, 20, 4, -1, -2, 5 };
+                    int oddNumber;
+                    ArrayEntity arrayOdd = new ArrayEntity(theOddArray, false);
+                    oddNumber = arrayOdd.FindOdd();
+                    Console.WriteLine(oddNumber);
+                    break;
+                case "9":
+                    List<object> list = new List<object> { 1, 2, "a", "b" };
+                    ListEntity filterList = new ListEntity();
+                    IEnumerable<int> filteredList;
+                    filteredList = filterList.GetIntegersFromList(list);
+                    filterList.Print(filteredList);
                     break;
                 default:
                     break;

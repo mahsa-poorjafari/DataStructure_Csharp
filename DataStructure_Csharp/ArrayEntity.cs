@@ -160,8 +160,32 @@ namespace DataStructure_Csharp
 
             }
         }
+        //Given an array, find the int that appears an odd number of times.
 
-
+        //There will always be only one integer that appears an odd number of times.
+        public int FindOdd()
+        {
+            this.Print();
+            int[] seq = Myarray;            
+            int count;
+            int oddNumber = -1;
+            int n = seq.Length;
+            for (int i = 0; i < n; i++)
+            {
+                count = 0;
+                for (int j = 0; j < n; j++)
+                {
+                    if (seq[j] == seq[i])
+                        count++;
+                }
+                if (count % 2 == 1)
+                    oddNumber = seq[i];
+            }
+            return oddNumber;
+        }
+        
     }
 
 }
+
+
